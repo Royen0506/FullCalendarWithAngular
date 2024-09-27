@@ -3,10 +3,7 @@
         資料夾位置：src/app/features/calendar-api
     </div>
 
-    <full-calendar
-        style="z-index: -1"
-        [options]="calendarOptions"
-    ></full-calendar>
+    <full-calendar [options]="calendarOptions"></full-calendar>
     <p-dialog header="Edit Profile" [modal]="true" [(visible)]="visible">
         <span class="p-text-secondary block mb-5"
             >Update your information.</span

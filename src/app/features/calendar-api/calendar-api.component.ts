@@ -1,8 +1,7 @@
 import { Component } from '@angular/core'
 import { FullCalendarModule } from '@fullcalendar/angular'
-import { CalendarApi, CalendarOptions } from '@fullcalendar/core'
+import { CalendarOptions } from '@fullcalendar/core'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction'
 import { DialogModule } from 'primeng/dialog'
 import { ButtonModule } from 'primeng/button'
 import { InputTextModule } from 'primeng/inputtext'
@@ -56,8 +55,8 @@ export class CalendarApiComponent {
         customButtons: {
             myCustomButton: {
                 text: '客製',
-                click: function () {
-                    alert('客製按鈕觸發')
+                click: () => {
+                    this.visible = true
                 },
             },
 

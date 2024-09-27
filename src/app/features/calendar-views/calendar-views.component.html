@@ -1,1 +1,17 @@
-<p>calendar-views works!</p>
+<div class="container">
+    <div class="mb-3 font-bold text-red-400">
+        資料夾位置：src/app/features/calendar-views
+    </div>
+
+    <p-accordion [activeIndex]="2">
+        <p-accordionTab header="基礎樣式">
+            <full-calendar [options]="monthCalendarOptions"></full-calendar>
+        </p-accordionTab>
+        <p-accordionTab header="TimeGrid View">
+            <full-calendar [options]="timeGridCalendarOptions"></full-calendar>
+        </p-accordionTab>
+        <p-accordionTab header="List View">
+            <full-calendar [options]="listCalendarOptions"></full-calendar>
+        </p-accordionTab>
+    </p-accordion>
+</div>
