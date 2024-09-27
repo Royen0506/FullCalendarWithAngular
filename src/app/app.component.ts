@@ -30,7 +30,10 @@ export class AppComponent {
                 },
             },
             {
-                label: 'Projects',
+                label: '行事曆顯示型式',
+                command: () => {
+                    this.router.navigate(['/views'])
+                },
             },
             {
                 label: 'Contact',
