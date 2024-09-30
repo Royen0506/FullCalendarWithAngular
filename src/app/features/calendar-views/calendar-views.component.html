@@ -3,7 +3,7 @@
         資料夾位置：src/app/features/calendar-views
     </div>
 
-    <p-accordion [activeIndex]="2">
+    <p-accordion [activeIndex]="0">
         <p-accordionTab header="基礎樣式">
             <full-calendar [options]="monthCalendarOptions"></full-calendar>
         </p-accordionTab>
@@ -12,6 +12,20 @@
         </p-accordionTab>
         <p-accordionTab header="List View">
             <full-calendar [options]="listCalendarOptions"></full-calendar>
+        </p-accordionTab>
+        <p-accordionTab header="Day Grid View">
+            <full-calendar
+                class="mb-4"
+                [options]="dayGridViewOptions"
+            ></full-calendar>
+            <full-calendar
+                class="mb-4"
+                [options]="yearViewOptions"
+            ></full-calendar>
+            <full-calendar [options]="customDayGirdView"></full-calendar>
+        </p-accordionTab>
+        <p-accordionTab header="Multi-Month Stack">
+            <full-calendar [options]="multiMonthStackView"></full-calendar>
         </p-accordionTab>
     </p-accordion>
 </div>

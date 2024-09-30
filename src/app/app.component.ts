@@ -36,7 +36,22 @@ export class AppComponent {
                 },
             },
             {
-                label: 'Contact',
+                label: '日期顯示及點擊',
+                command: () => {
+                    this.router.navigate(['/dateTimeDisplay'])
+                },
+            },
+            {
+                label: '行程資料的顯示',
+                command: () => {},
+            },
+            {
+                label: '多國語系與時間區',
+                command: () => {},
+            },
+            {
+                label: 'CRUD範例',
+                command: () => {},
             },
         ]
     }

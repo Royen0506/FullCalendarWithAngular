@@ -5,6 +5,7 @@ import { CalendarOptions } from '@fullcalendar/core/index.js'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import listPlugin from '@fullcalendar/list'
+import multiMonthPlugin from '@fullcalendar/multimonth'
 
 import { TabViewModule } from 'primeng/tabview'
 import { AccordionModule } from 'primeng/accordion'
@@ -19,7 +20,7 @@ import { AccordionModule } from 'primeng/accordion'
 export class CalendarViewsComponent {
     visible: boolean = false
 
-    // 月曆型
+    // Month View(基礎類型)
     monthCalendarOptions: CalendarOptions = {
         // 基礎設置
         initialView: 'dayGridMonth',
@@ -32,13 +33,13 @@ export class CalendarViewsComponent {
         // showNonCurrentDates: true,
     }
 
-    // 時間格線型
+    // TimeGrid View
     timeGridCalendarOptions: CalendarOptions = {
         // 寫入樣式
         initialView: 'timeGridWeek',
         plugins: [timeGridPlugin],
 
-        // 自定義行事曆顯示的天數
+        // 在TimeGrid View基礎下自訂義View
         // views: {
         //     // Key名稱帶入initialView內
         //     timeGridFourDay: {
@@ -66,13 +67,13 @@ export class CalendarViewsComponent {
         // allDaySlot: false,
     }
 
-    // 清單型
+    // List View
     listCalendarOptions: CalendarOptions = {
         // 寫入樣式
         plugins: [listPlugin],
         initialView: 'listWeek',
 
-        // 當行程完成載入時呼叫
+        // 當所有行程資料完成載入時呼叫
         eventDidMount: (info) => {
             if (info.event.extendedProps['status'] === 'done') {
                 // 設定符合條件的行程背景色為粉色
@@ -119,5 +120,45 @@ export class CalendarViewsComponent {
                 borderColor: 'green',
             },
         ],
+    }
+
+    // DayGrid View
+    // 1、Week & Day View
+    dayGridViewOptions: CalendarOptions = {
+        plugins: [dayGridPlugin],
+        initialView: 'dayGridWeek',
+        headerToolbar: {
+            left: 'prev,next',
+            center: 'title',
+            right: 'dayGridWeek,dayGridDay',
+        },
+    }
+
+    // 2、Year View
+    yearViewOptions: CalendarOptions = {
+        plugins: [dayGridPlugin],
+        initialView: 'dayGridYear',
+    }
+
+    //3、Custom DayGrid View
+    // 在DayGrid View的基礎下自定義View
+    customDayGirdView: CalendarOptions = {
+        plugins: [dayGridPlugin],
+        initialView: 'dayGridFourWeek',
+        views: {
+            dayGridFourWeek: {
+                type: 'dayGrid',
+                // 只顯示3週
+                duration: { weeks: 3 },
+            },
+        },
+    }
+
+    // Multi-Month Stack
+    multiMonthStackView: CalendarOptions = {
+        plugins: [multiMonthPlugin],
+        initialView: 'multiMonthYear',
+        // 控制一列要顯示幾個月曆，預設為3個
+        // multiMonthMaxColumns: 2,
     }
 }
