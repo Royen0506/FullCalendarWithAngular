@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="mb-3 font-bold text-red-400">
+        資料夾位置：src/app/features/event
+    </div>
+
+    <p-accordion [activeIndex]="5">
+        <p-accordionTab header="行程物件的基本內容">
+            <full-calendar [options]="basicCalendarOption"></full-calendar>
+        </p-accordionTab>
+        <p-accordionTab header="統一規範行程顯示樣式">
+            <full-calendar [options]="unifiedEventStyleOptions"></full-calendar>
+        </p-accordionTab>
+        <p-accordionTab header="行程點擊事件">
+            <full-calendar [options]="eventClickOptions"></full-calendar>
+        </p-accordionTab>
+        <p-accordionTab header="拖拉功能">
+            <full-calendar [options]="dragAndDropOptions"></full-calendar>
+        </p-accordionTab>
+        <p-accordionTab header="行程彈出視窗">
+            <full-calendar [options]="popoverOptions"></full-calendar>
+        </p-accordionTab>
+        <p-accordionTab header="背景色的行程顯示模式">
+            <full-calendar [options]="backgroundColorOptions"></full-calendar>
+        </p-accordionTab>
+    </p-accordion>
+</div>

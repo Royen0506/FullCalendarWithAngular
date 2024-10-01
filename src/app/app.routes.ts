@@ -3,6 +3,9 @@ import { CalendarBasicDemoComponent } from './features/calendar-basic-demo/calen
 import { CalendarApiComponent } from './features/calendar-api/calendar-api.component'
 import { CalendarViewsComponent } from './features/calendar-views/calendar-views.component'
 import { DateAndTimeDisplayComponent } from './features/date-and-time-display/date-and-time-display.component'
+import { EventComponent } from './features/event/event.component'
+import { InternationalComponent } from './features/international/international.component'
+import { CrudDemoComponent } from './features/crud-demo/crud-demo.component'
 
 export const routes: Routes = [
     {
@@ -20,5 +23,17 @@ export const routes: Routes = [
     {
         path: 'dateTimeDisplay',
         component: DateAndTimeDisplayComponent,
+    },
+    {
+        path: 'event',
+        component: EventComponent,
+    },
+    {
+        path: 'international',
+        component: InternationalComponent,
+    },
+    {
+        path: 'crud',
+        component: CrudDemoComponent,
     },
 ]

@@ -5,6 +5,19 @@
                 <span class="ml-2">{{ item.label }}</span>
             </a>
         </ng-template>
+
+        <ng-template pTemplate="end">
+            <div [formGroup]="formGroup">
+                <p-dropdown
+                    formControlName="language"
+                    [options]="languages"
+                    optionLabel="label"
+                    placeholder="請選擇"
+                    styleClass="w-full"
+                    inputStyleClass="w-full"
+                />
+            </div>
+        </ng-template>
     </p-menubar>
 </div>
 <router-outlet></router-outlet>

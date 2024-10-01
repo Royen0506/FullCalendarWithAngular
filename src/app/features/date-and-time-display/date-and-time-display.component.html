@@ -3,12 +3,18 @@
         資料夾位置：src/app/features/date-and-time-display
     </div>
 
-    <p-accordion [activeIndex]="0">
+    <p-accordion [activeIndex]="3">
         <p-accordionTab header="日期相關的顯示">
             <full-calendar [options]="dayGridViewOptions"></full-calendar>
         </p-accordionTab>
         <p-accordionTab header="日期連結">
             <full-calendar [options]="dateLinkOptions"></full-calendar>
+        </p-accordionTab>
+        <p-accordionTab header="現在時間的指標">
+            <full-calendar [options]="timeGridView"></full-calendar>
+        </p-accordionTab>
+        <p-accordionTab header="工作時間設定">
+            <full-calendar [options]="businessHoursView"></full-calendar>
         </p-accordionTab>
     </p-accordion>
 </div>
