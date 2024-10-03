@@ -36,5 +36,13 @@ export class InternationalComponent {
         // ko: 韓文
         // it: 意大利文
         // pt: 葡萄牙文
+
+        timeZone: 'Asia/Taipei',
+        // 常見使用的時區選項:
+        // 'Asia/Taipei',
+        // 'America/New_York',
+        // 'Europe/London',
+        // 'Asia/Tokyo',
+        // 'Australia/Sydney'
     }
 }
