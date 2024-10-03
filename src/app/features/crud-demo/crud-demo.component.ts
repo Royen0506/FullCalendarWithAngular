@@ -34,8 +34,7 @@ import { CalendarEventDialogComponent } from '../../share/components/calendar-ev
     styleUrl: './crud-demo.component.scss',
 })
 export class CrudDemoComponent {
-    @ViewChild('calendar') calendarComponent: FullCalendarComponent | undefined // 新增這行
-
+    @ViewChild('calendar') calendarComponent: FullCalendarComponent | undefined
     allEvents: calendarEvent[] = []
 
     // 行事曆設定
