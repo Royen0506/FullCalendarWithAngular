@@ -9,7 +9,8 @@ import {
     ReactiveFormsModule,
 } from '@angular/forms'
 import { DropdownModule } from 'primeng/dropdown'
-
+import { LanguageService } from './share/service/language.service'
+import { Option } from './share/model/option'
 @Component({
     selector: 'app-root',
     standalone: true,
@@ -24,11 +25,20 @@ import { DropdownModule } from 'primeng/dropdown'
     styleUrl: './app.component.scss',
 })
 export class AppComponent {
+    // 功能選單項目
     items: MenuItem[] | undefined
-    formGroup!: FormGroup
-    languages: any[] = []
 
-    constructor(private router: Router, private formBuilder: FormBuilder) {}
+    // 表單
+    formGroup!: FormGroup
+
+    // 語系下拉選單，僅在CRUD範例頁面做動
+    languages: Option[] = []
+
+    constructor(
+        private router: Router,
+        private formBuilder: FormBuilder,
+        private languageService: LanguageService
+    ) {}
 
     ngOnInit() {
         this.items = [
@@ -77,22 +87,26 @@ export class AppComponent {
         ]
 
         this.languages = [
-            { label: '中文', value: 'zh-tw' },
+            { label: '繁體中文', value: 'zh-tw' },
+            { label: '簡體中文', value: 'zh-cn' },
             { label: 'English', value: 'en' },
         ]
+
         this.formGroup = this.formBuilder.nonNullable.group({
             language: '',
         })
+
         this.formSub()
 
         this.formGroup
             .get('language')
-            ?.setValue({ label: 'English', value: 'en' })
+            ?.setValue({ label: '繁體中文', value: 'zh-tw' })
     }
 
+    // 監聽語系下拉表單變化
     formSub(): void {
         this.formGroup.get('language')?.valueChanges.subscribe((res) => {
-            sessionStorage.setItem('selectedLanguage', res.value)
+            this.languageService.setSessionItem('selectedLanguage', res)
         })
     }
 }

@@ -1,0 +1,73 @@
+<form [formGroup]="formGroup">
+    <div class="grid">
+        <div class="col-12 p-fluid">
+            <label for="title" class="flex mb-1">行程標題</label>
+            <input
+                type="text"
+                id="title"
+                pInputText
+                formControlName="title"
+                styleClass="w-full"
+                inputStyleClass="w-full"
+            />
+        </div>
+        <div class="col-6">
+            <label class="flex mb-1" for="startTime">開始時間</label>
+            <p-calendar
+                inputId="startTime"
+                formControlName="start"
+                dateFormat="yy/mm/dd"
+                dataType="string"
+                styleClass="w-full"
+                inputStyleClass="w-full"
+                [iconDisplay]="'input'"
+                [showIcon]="true"
+                inputId="icondisplay"
+                [showTime]="true"
+                hourFormat="24"
+            />
+        </div>
+        <div class="col-6">
+            <label class="flex mb-1" for="endTime">結束時間</label>
+            <p-calendar
+                inputId="endTime"
+                formControlName="end"
+                dateFormat="yy/mm/dd"
+                dataType="string"
+                styleClass="w-full"
+                inputStyleClass="w-full"
+                [iconDisplay]="'input'"
+                [showIcon]="true"
+                inputId="icondisplay"
+                [showTime]="true"
+                hourFormat="24"
+            />
+        </div>
+    </div>
+    <div class="flex">
+        <button
+            pButton
+            pRipple
+            label="儲存"
+            class="p-button-success mr-2 ml-auto"
+            (click)="doClose()"
+        ></button>
+        <button
+            pButton
+            pRipple
+            label="取消"
+            [outlined]="true"
+            severity="success"
+            class="mr-2"
+        ></button>
+        <button
+            *ngIf="isEdit"
+            pButton
+            pRipple
+            label="刪除行程"
+            [outlined]="true"
+            severity="success"
+            (click)="doClose('Delete')"
+        ></button>
+    </div>
+</form>
