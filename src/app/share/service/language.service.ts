@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core'
-import { ReplaySubject, Subject } from 'rxjs'
+import { Subject } from 'rxjs'
 
 // 模擬多個頁面共用語系Service
 @Injectable({
     providedIn: 'root',
 })
 export class LanguageService {
-    private sessionItemSubject = new ReplaySubject<{
+    private sessionItemSubject = new Subject<{
         title: string
         content: any
     }>()

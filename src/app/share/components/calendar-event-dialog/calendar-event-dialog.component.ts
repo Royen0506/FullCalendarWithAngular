@@ -34,7 +34,7 @@ export class CalendarEventDialogComponent {
     constructor(
         private formBuilder: FormBuilder,
         private dynamicDialogConfig: DynamicDialogConfig,
-        private dynamicDialogRef: DynamicDialogRef
+        public dynamicDialogRef: DynamicDialogRef
     ) {}
 
     ngOnInit(): void {

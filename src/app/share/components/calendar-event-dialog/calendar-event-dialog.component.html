@@ -59,6 +59,7 @@
             [outlined]="true"
             severity="success"
             class="mr-2"
+            (click)="this.dynamicDialogRef.close()"
         ></button>
         <button
             *ngIf="isEdit"
