@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core'
+import { Component } from '@angular/core'
 import {
     FormBuilder,
     FormGroup,
@@ -9,7 +9,6 @@ import { CalendarModule } from 'primeng/calendar'
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog'
 import { InputTextModule } from 'primeng/inputtext'
 import { ButtonModule } from 'primeng/button'
-import { flatMap } from 'rxjs'
 import { CommonModule } from '@angular/common'
 
 @Component({
@@ -52,10 +51,10 @@ export class CalendarEventDialogComponent {
         const data = this.dynamicDialogConfig.data
         if (data && data.status === 'Edit') {
             this.isEdit = true
-            this.formGroup.get('start')?.setValue(data._instance.range.start)
-            this.formGroup.get('end')?.setValue(data._instance.range.end)
-            this.formGroup.get('title')?.setValue(data._def.title)
-            this.formGroup.get('id')?.setValue(data._def.publicId)
+            this.formGroup.get('start')?.setValue(data.start)
+            this.formGroup.get('end')?.setValue(data.end)
+            this.formGroup.get('title')?.setValue(data.title)
+            this.formGroup.get('id')?.setValue(data.id)
         } else {
             this.formGroup.get('start')?.setValue(data.date)
         }

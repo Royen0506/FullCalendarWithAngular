@@ -1,6 +1,5 @@
-import { Subject } from 'rxjs'
 import { LanguageService } from './../../share/service/language.service'
-import { Component, model, SimpleChanges, ViewChild } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import {
     FullCalendarComponent,
     FullCalendarModule,
@@ -18,6 +17,8 @@ import { calendarEvent } from './model/calendarEvent'
 import { DynamicDialogModule } from 'primeng/dynamicdialog'
 import { DialogService } from 'primeng/dynamicdialog'
 import { CalendarEventDialogComponent } from '../../share/components/calendar-event-dialog/calendar-event-dialog.component'
+import momentTimezonePlugin from '@fullcalendar/moment-timezone'
+
 @Component({
     selector: 'app-crud-demo',
     standalone: true,
@@ -40,7 +41,13 @@ export class CrudDemoComponent {
     // 行事曆設定
     calendarDemoOption: CalendarOptions = {
         initialView: 'dayGridMonth',
-        plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin],
+        plugins: [
+            interactionPlugin,
+            dayGridPlugin,
+            timeGridPlugin,
+            listPlugin,
+            momentTimezonePlugin,
+        ],
         locales: allLocales,
         headerToolbar: {
             left: 'prev,next today',
@@ -50,10 +57,15 @@ export class CrudDemoComponent {
         aspectRatio: 2,
         editable: true,
         dayMaxEventRows: true,
-        timeZone: 'Asia/Taipei',
+        timeZone: 'local',
         events: [],
         eventClick: (info) => {
-            const data = info.event
+            const data = {
+                title: info.event.title,
+                id: info.event._def.publicId,
+                start: info.event.start,
+                end: info.event.end,
+            }
             this.onOpenCalendarDialog('Edit', data)
         },
 
@@ -96,7 +108,6 @@ export class CrudDemoComponent {
 
     // 開啟Dialog執行新增、修改、刪除
     onOpenCalendarDialog(status: string, data?: any): void {
-        //
         let dialogConfig
         if (status === 'Edit') {
             dialogConfig = {
