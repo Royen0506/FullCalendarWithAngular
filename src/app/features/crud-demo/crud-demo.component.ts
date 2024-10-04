@@ -17,7 +17,6 @@ import { calendarEvent } from './model/calendarEvent'
 import { DynamicDialogModule } from 'primeng/dynamicdialog'
 import { DialogService } from 'primeng/dynamicdialog'
 import { CalendarEventDialogComponent } from '../../share/components/calendar-event-dialog/calendar-event-dialog.component'
-import momentTimezonePlugin from '@fullcalendar/moment-timezone'
 
 @Component({
     selector: 'app-crud-demo',
@@ -41,13 +40,7 @@ export class CrudDemoComponent {
     // 行事曆設定
     calendarDemoOption: CalendarOptions = {
         initialView: 'dayGridMonth',
-        plugins: [
-            interactionPlugin,
-            dayGridPlugin,
-            timeGridPlugin,
-            listPlugin,
-            momentTimezonePlugin,
-        ],
+        plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin],
         locales: allLocales,
         headerToolbar: {
             left: 'prev,next today',
