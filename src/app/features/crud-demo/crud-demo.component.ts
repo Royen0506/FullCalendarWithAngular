@@ -4,7 +4,7 @@ import {
     FullCalendarComponent,
     FullCalendarModule,
 } from '@fullcalendar/angular'
-import { CalendarOptions } from '@fullcalendar/core/index.js'
+import { CalendarApi, CalendarOptions } from '@fullcalendar/core/index.js'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import { CrudDemoService } from './service/crud-demo.service'
 import interactionPlugin from '@fullcalendar/interaction'
@@ -17,6 +17,7 @@ import { calendarEvent } from './model/calendarEvent'
 import { DynamicDialogModule } from 'primeng/dynamicdialog'
 import { DialogService } from 'primeng/dynamicdialog'
 import { CalendarEventDialogComponent } from '../../share/components/calendar-event-dialog/calendar-event-dialog.component'
+import { CalendarService } from '../../share/service/calendar.service'
 
 @Component({
     selector: 'app-crud-demo',
@@ -70,7 +71,8 @@ export class CrudDemoComponent {
     constructor(
         private crudDemoService: CrudDemoService,
         private languageService: LanguageService,
-        private dialogService: DialogService
+        private dialogService: DialogService,
+        private calendarService: CalendarService
     ) {}
 
     ngOnInit(): void {
@@ -139,9 +141,11 @@ export class CrudDemoComponent {
                 this.calendarDemoOption.events.splice(currentEventIndex, 1)
 
                 // 使用 FullCalendar API 重新渲染行程
-                const calendarApi = this.calendarComponent.getApi()
-                calendarApi.removeAllEvents()
-                calendarApi.addEventSource(this.calendarDemoOption.events)
+                this.calendarService.reRenderCalendar(
+                    this.calendarComponent,
+                    this.calendarDemoOption
+                )
+
                 return
             }
 
@@ -165,9 +169,10 @@ export class CrudDemoComponent {
                 }
 
                 // 使用 FullCalendar API 重新渲染行程
-                const calendarApi = this.calendarComponent.getApi()
-                calendarApi.removeAllEvents()
-                calendarApi.addEventSource(this.calendarDemoOption.events)
+                this.calendarService.reRenderCalendar(
+                    this.calendarComponent,
+                    this.calendarDemoOption
+                )
             }
         })
     }
