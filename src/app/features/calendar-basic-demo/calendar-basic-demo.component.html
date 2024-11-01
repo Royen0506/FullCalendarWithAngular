@@ -6,3 +6,25 @@
     <!-- 行事曆標籤 -->
     <full-calendar [options]="calendarOptions"></full-calendar>
 </div>
+
+
+<div>
+    <button
+      pButton
+      type="button"
+      (click)="startRecording()"
+      [disabled]="isRecording"
+    >
+      開始錄音
+    </button>
+    <button
+      pButton
+      type="button"
+      (click)="stopRecording()"
+      [disabled]="!isRecording"
+    >
+      停止錄音
+    </button>
+  </div>
+
+  <audio *ngIf="audioUrl" [src]="audioUrl" controls></audio>
